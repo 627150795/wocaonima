@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Sample Project</title>
+</head>
+<body>
+    <h1>Web3 Sample Project</h1>
+    <button id="connect">连接钱包</button>
+    <script src="app.js"></script>
+</body>
+</html>
+window.addEventListener('DOMContentLoaded', async () => {
+    const connectButton = document.getElementById('connect');
+
+    connectButton.addEventListener('click', async () => {
+        if (window.ethereum) {
+            try {
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                console.log('钱包已连接');
+            } catch (error) {
+                console.error('用户拒绝了连接请求');
+            }
+        } else {
+            console.error('请安装MetaMask钱包');
+        }
+    });
+});
+{
+  "name": "web3-sample-project",
+  "version": "1.0.0",
+  "description": "A simple Web3 project",
+  "main": "app.js",
+  "scripts": {
+    "start": "python -m SimpleHTTPServer"
+  },
+  "author": "",
+  "license": "ISC"
+}
